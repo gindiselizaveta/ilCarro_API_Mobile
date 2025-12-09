@@ -20,8 +20,16 @@ dependencies {
 
     implementation 'io.rest-assured:rest-assured:4.5.1'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+    implementation 'io.appium:java-client:8.3.0'
+
+    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
 }
 
 test {
     useTestNG()
+    jvmArgs(
+            '--add-opens=java.base/java.lang=ALL-UNNAMED',
+            '--add-opens=java.base/java.io=ALL-UNNAMED',
+            '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED')
 }
