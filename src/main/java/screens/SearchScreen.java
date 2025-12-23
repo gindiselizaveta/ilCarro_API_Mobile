@@ -16,8 +16,15 @@ public class SearchScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='More options']")
     WebElement btnDots;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.telran.ilcarro:id/title' and @text='My Cars']")
+    WebElement btnMyCars;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.telran.ilcarro:id/title' and @text='Logout']")
+    WebElement btnLogOut;
+
     @AndroidFindBy(xpath = "//android.widget.Toast[@text='Login success!']")
-    WebElement popUpMessageSuccess;
+    WebElement popUpMessageLoginSuccess;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Registration success!']")
+    WebElement popUpMessageRegSuccess;
 
     public void clickBtnLogin() {
         clickWait(btnLogin, 3);
@@ -31,7 +38,23 @@ public class SearchScreen extends BaseScreen {
         clickWait(btnDots, 3);
     }
 
-    public boolean validatePopUpMessage(String text) {
-        return isTextInElementPresent(popUpMessageSuccess, text, 5);
+    public void clickBtnMyCars() {
+        clickWait(btnMyCars, 3);
+    }
+
+    public void clickBtnLogOut() {
+        clickWait(btnLogOut, 3);
+    }
+
+    public boolean validatePopUpMessageLogin(String text) {
+        return isTextInElementPresent(popUpMessageLoginSuccess, text, 5);
+    }
+
+    public boolean validatePopUpMessageRegistration(String text) {
+        return isTextInElementPresent(popUpMessageRegSuccess, text, 5);
+    }
+
+    public boolean isElementPresentBtnLogin(String text) {
+        return isTextInElementPresent(btnLogin, text, 5);
     }
 }

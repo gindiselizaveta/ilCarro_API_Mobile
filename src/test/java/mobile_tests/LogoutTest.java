@@ -9,23 +9,28 @@ import screens.LoginScreen;
 import screens.SearchScreen;
 import screens.SplashScreen;
 
-public class LoginTests extends AppiumConfig {
+public class LogoutTest extends AppiumConfig {
 
     @BeforeMethod
-    public void openLoginScreen() {
+    public void login() {
         new SplashScreen(driver).goToSearchScreen(7);
         SearchScreen searchScreen = new SearchScreen(driver);
         searchScreen.clickBtnDots();
         searchScreen.clickBtnLogin();
-    }
 
-    @Test
-    public void loginPositiveTest() {
         RegistrationBodyDto user = RegistrationBodyDto.builder()
                 .username("lizkafox@mail.ru").password("wertY!23").build();
         LoginScreen loginScreen = new LoginScreen(driver);
         loginScreen.typeLoginForm(user);
         loginScreen.clickBtnYalla();
-        Assert.assertTrue(new SearchScreen(driver).validatePopUpMessageLogin("Login success!"));
+    }
+
+    @Test
+    public void logOutPositiveTest() {
+        SearchScreen searchScreen = new SearchScreen(driver);
+        searchScreen.clickBtnDots();
+        searchScreen.clickBtnLogOut();
+        searchScreen.clickBtnDots();
+        Assert.assertTrue(searchScreen.isElementPresentBtnLogin("Login"));
     }
 }
