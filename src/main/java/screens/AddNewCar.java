@@ -56,7 +56,7 @@ public class AddNewCar extends BaseScreen {
 
     private void typeFuel(String fuel) {
         inputFuel.click();
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(7))
                 .until(ExpectedConditions.elementToBeClickable(By
                         .xpath("//*[@text='" + fuel + "']")))
                 .click();
