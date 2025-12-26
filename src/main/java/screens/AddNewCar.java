@@ -44,7 +44,7 @@ public class AddNewCar extends BaseScreen {
         inputManufacture.sendKeys(car.getManufacture());
         inputModel.sendKeys(car.getModel());
         inputCity.sendKeys(car.getCity());
-        inputPricePerDay.sendKeys(String.valueOf(car.getSeats()));
+        inputPricePerDay.sendKeys(String.valueOf(car.getPricePerDay()));
         inputCarClass.sendKeys(car.getCarClass());
         //swipe(500, 1500, 500, 350);
         //System.out.println(height + "x" + width);
@@ -55,7 +55,7 @@ public class AddNewCar extends BaseScreen {
     }
 
     private void typeFuel(String fuel) {
-        inputFuel.click();
+        clickWait(inputFuel, 3);
         new WebDriverWait(driver, Duration.ofSeconds(7))
                 .until(ExpectedConditions.elementToBeClickable(By
                         .xpath("//*[@text='" + fuel + "']")))
